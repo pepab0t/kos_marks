@@ -33,7 +33,7 @@ class KOSScraper:
 
     def __init__(self, subject_code: str, check_interval: int):
         """check_interval in seconds"""
-        print(os.environ.get("username"))
+        print(os.environ.get("kos_username"))
 
         self.s = requests.Session()
         self.page_code: str | None = None
@@ -44,8 +44,8 @@ class KOSScraper:
         response = self.s.post(
             URL_LOGIN,
             data={
-                "userName": os.environ.get("USR"),
-                "password": os.environ.get("PWD"),
+                "userName": os.environ.get("kos_username"),
+                "password": os.environ.get("kos_password"),
             },
         )
 
