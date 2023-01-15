@@ -31,6 +31,7 @@ class KOSScraper:
 
     def __init__(self, subject_code: str, check_interval: int):
         """check_interval in seconds"""
+        print(os.environ.get("username"))
 
         self.s = requests.Session()
         self.page_code: str | None = None
@@ -43,8 +44,6 @@ class KOSScraper:
                 'password': os.environ.get("password"),
             })
         
-        self.to_file(response.text)
-
         doc = BeautifulSoup(response.text, self.parser)
 
         if not self._logged(doc):
