@@ -9,8 +9,8 @@ To access your kos account, create file in project directory called\
 `.env`\
 and specify your username and password by creating variables
 ```
-USR=YOUR_USERNAME
-PWD=YOUR_PASSWORD
+kos_username=YOUR_USERNAME
+kos_password=YOUR_PASSWORD
 ```
 in this file.
 
