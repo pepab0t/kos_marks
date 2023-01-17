@@ -77,7 +77,7 @@ class KOSScraper:
         return page_match[1]
 
     def get_subject_mark(self, doc: BeautifulSoup) -> str | None:
-        a_tags = doc.find_all("a", text=self.subject_code)
+        a_tags = doc.find_all("a", text=re.compile(f".*{self.subject_code}.*"))
 
         if len(a_tags) == 0:
             return None
@@ -87,7 +87,7 @@ class KOSScraper:
         tr = a.parent.parent
         td = tr.find("td", title=re.compile(r".*Datum klasifikace:.*"))
         if td is None:
-            return None
+            return " "
         return td.text
 
     @pause
@@ -99,6 +99,7 @@ class KOSScraper:
                 cookies=self.s.cookies.get_dict(),
                 params={"page": self.page_code},
             )
+            self.to_file(response.text)
             doc = BeautifulSoup(response.text, self.parser)
             if not self._logged(doc):
                 try:

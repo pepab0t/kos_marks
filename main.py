@@ -1,6 +1,6 @@
 from scraper import KOSScraper
 
-SUBJECT_CODE: str = "2012050"
+SUBJECT_CODE: str = "2011090"
 
 
 """CHECK_INTERVAL is seconds"""
